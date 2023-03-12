@@ -4,8 +4,34 @@ b. Print all the nodes reachable from a given starting node in a diagraph using 
 #include<stdio.h>
 #include<stdlib.h>
 int a[30][30],visited[20],n;
-void create();
-void dfs(int v);
+void create() {
+    int i,j;
+    printf("Enter the number of nodes\n");
+    scanf("%d",&n);
+    printf("Enter the adjacency matrix\n");
+    for(i=0;i<n;i++)
+    for(j=0;j<n;j++)
+        scanf("%d",&a[i][j]);
+        printf("Adjacency matrix :\n");
+    for(i=0;i<n;i++) {
+        for(j=0;j<n;j++) {
+            printf("%d\t",a[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+void dfs(int v) {
+    int i;
+    printf("%d\t",v);
+    visited[v]=1;
+    for(i=0;i<n;i++) {
+        if(visited[i]==0 && a[v][i]==1) {
+            dfs(i);
+        }
+    }
+}
+
 int main() {
     int i,ch,source;
     while(1) {
@@ -30,29 +56,5 @@ int main() {
     }
     return 0;
 }
-void create() {
-    int i,j;
-    printf("Enter the number of nodes\n");
-    scanf("%d",&n);
-    printf("Enter the adjacency matrix\n");
-    for(i=0;i<n;i++)
-    for(j=0;j<n;j++)
-        scanf("%d",&a[i][j]);
-        printf("Adjacency matrix :\n");
-    for(i=0;i<n;i++) {
-        for(j=0;j<n;j++) {
-            printf("%d\t",a[i][j]);
-        }
-        printf("\n");
-    }
-}
-void dfs(int v) {
-    int i;
-    printf("%d\t",v);
-    visited[v]=1;
-    for(i=0;i<n;i++) {
-        if(visited[i]==0 && a[v][i]==1) {
-            dfs(i);
-        }
-    }
-}
+
+
