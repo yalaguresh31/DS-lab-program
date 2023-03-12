@@ -13,14 +13,28 @@ e. Exit
 #define max 3
 int st[10],top=-1,i,ch;
 void push(){
-top==(max-1)? printf("Stack Overflow\n") : printf("Enter the element\n"); scanf("%d",&st[++top]);
-}
+if(top==(max-1))
+ printf("Stack Overflow\n");
+ else{
+ printf("Enter the element\n");
+ scanf("%d",&st[++top]);
+ }
+}//end of push
+
 void pop(){
-top==-1?printf("Stack Underflow\n") : printf("Popped element=%d\n",st[top--]); 
-}
+top==-1? printf("Stack Underflow\n") : printf("Popped element=%d\n",st[top--]); 
+}//end of pop
+
 void display(){
-top==-1? printf("Stack is empty\n") : printf("Stack elements:\n");for(i=top;i>=0;i--) printf("%d\n",st[i]); 
-}
+(top==-1)
+ printf("Stack is empty\n");
+ else{
+ printf("Stack elements:\n");
+ for(i=top;i>=0;i--) 
+  printf("%d\n",st[i]); 
+ }
+}//end of display
+
 void main(){
     while(1){
         printf("\n~~~~MENU~~~~\n1.Push\t2.Pop\t3.Display\t4.EXIT\nEnter choice\n");
